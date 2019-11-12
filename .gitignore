@@ -1,0 +1,7 @@
+/node_modules
+/front/src/images/converted
+
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
