@@ -121,7 +121,7 @@ class Logic extends Component {
         // timeout for local development, pc tooks some time to save img
         //and Cross-Origin Read Blocking (CORB)
         this.timer = setTimeout(()=> {
-        this.setState({ convertedPicture: SERVER_ADDRESS_IMAGES + res.data.picture }); //use SERVER_ADDRESS_IMAGES or FRONT_SERVER_ADDRESS
+        this.setState({ convertedPicture: SERVER_ADDRESS_IMAGES + res.data.picture }); //use SERVER_ADDRESS_IMAGES or FRONT_SERVER_ADDRESS if running localy
         return console.log(res.data);
       }, 1000)
       });
