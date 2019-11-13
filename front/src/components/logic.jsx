@@ -123,7 +123,7 @@ class Logic extends Component {
         this.timer = setTimeout(()=> {
         this.setState({ convertedPicture: SERVER_ADDRESS_IMAGES + res.data.picture }); //use SERVER_ADDRESS_IMAGES or FRONT_SERVER_ADDRESS if running localy
         return console.log(res.data);
-      }, 1000)
+      }, 2000)
       });
     /* axios({
         method: 'post',
