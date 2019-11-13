@@ -6,13 +6,13 @@ import Col from "react-bootstrap/Col";
 
 const TextCordinates = ({xTextMove, hendleXmove, yTextMove, hendleYmove}) => {
   return (
-    <Card>
+    <Card className="mb-2 pl-2 pr-2 pt-2" bg="light">
       <Form>
         <Form.Row>
           <Form.Group as={Col}>
-            <Form.Label>Please input X move</Form.Label>
+            <Form.Label>Please input how many pixels to move by X-axis</Form.Label>
             <Form.Control
-              placeholder="Please input X move"
+              placeholder="Please input how many pixels to move by X-axis"
               aria-label="X move"
               value={xTextMove}
               onChange={value => hendleXmove(value)}
@@ -20,9 +20,9 @@ const TextCordinates = ({xTextMove, hendleXmove, yTextMove, hendleYmove}) => {
           </Form.Group>
 
           <Form.Group as={Col}>
-            <Form.Label>Please input Y move</Form.Label>
+            <Form.Label>Please input how many pixels to move by Y-axis</Form.Label>
             <Form.Control
-              placeholder="Please input Y move"
+              placeholder="Please input how many pixels to move by Y-axis"
               aria-label="Y move"
               value={yTextMove}
               onChange={value => hendleYmove(value)}

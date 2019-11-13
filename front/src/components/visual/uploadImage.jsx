@@ -5,9 +5,10 @@ import Form from "react-bootstrap/Form";
 
 const uploadImage = ({ hendlePictureInput }) => {
   return (
-    <Card>
+    <Card className="mb-2 pl-2" bg="light">
       <Form.Label>Upload image or select from list</Form.Label>
       <Form.Control
+        className="mb-1"
         type="file"
         name="image"
         onChange={value => hendlePictureInput(value)}

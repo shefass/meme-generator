@@ -4,7 +4,7 @@ const upload = require("./uploadMiddleware");
 const ModifyImage = require("./ModifyImage");
 const path = require("path");
 
-const WHERE_SAVE_CONVERTED_IMAGES = "./front/public/images/"; //modify this
+const WHERE_SAVE_CONVERTED_IMAGES = require("./CONFIQ"); //LOCAL TESTING
 
 //disable helmet, if this test not works
 /*

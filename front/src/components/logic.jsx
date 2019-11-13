@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Visual from "./visual/index";
+import {SERVER_ADDRESS, FRONT_SERVER_ADDRESS, SERVER_ADDRESS_IMAGES} from "../CONFIQ";
+
 
 class Logic extends Component {
   constructor(props){
@@ -101,19 +103,20 @@ class Logic extends Component {
     );
     console.log(this.state.text);
     axios
-      .post("http://localhost:4000/api/upload/", data, {
-        onUploadProgress: ProgressEvent => {
+      .post(SERVER_ADDRESS + "api/upload/", data, {
+       /* onUploadProgress: ProgressEvent => {
           this.setState({
             loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100
           });
-        }
+        }*/
       })
       .then(res => {
         // timeout for local development, pc tooks some time to save img
+        //and Cross-Origin Read Blocking (CORB)
         this.timer = setTimeout(()=> {
-        this.setState({ convertedPicture: "./images/" + res.data.picture });
+        this.setState({ convertedPicture: SERVER_ADDRESS_IMAGES + res.data.picture }); //use SERVER_ADDRESS_IMAGES or FRONT_SERVER_ADDRESS
         return console.log(res.data);
-      }, 200)
+      }, 1000)
       });
     /* axios({
         method: 'post',

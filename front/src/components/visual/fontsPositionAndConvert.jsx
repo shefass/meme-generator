@@ -17,8 +17,8 @@ const FontsPositionAndConvert = ({
   hendleConvertion
 }) => {
   return (
-    <Card>
-      <ButtonGroup aria-label="Vertical Aligment" vertical>
+    <Card className="mb-2" bg="light">
+      <ButtonGroup aria-label="Vertical Aligment" vertical className="m-2">
         <Button
           variant="info"
           active={"top" === vertical_align}
@@ -44,7 +44,7 @@ const FontsPositionAndConvert = ({
           Bottom
         </Button>
       </ButtonGroup>
-      <ButtonGroup aria-label="Horizontal Aligment">
+      <ButtonGroup aria-label="Horizontal Aligment" className="mr-2 ml-2 mb-2">
         <Button
           variant="info"
           active={"left" === horizontal_align}
@@ -70,7 +70,7 @@ const FontsPositionAndConvert = ({
           Right
         </Button>
       </ButtonGroup>
-      <Dropdown as={ButtonGroup}>
+      <Dropdown as={ButtonGroup} className="mr-2 ml-2 mb-2">
         <Button variant="secondary">Font size: {fontSize} Click to change font size --></Button>
 
         <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" />
@@ -105,14 +105,14 @@ const FontsPositionAndConvert = ({
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      <ButtonGroup aria-label="Horizontal Aligment">
+      <ButtonGroup aria-label="Horizontal Aligment" className="mr-2 ml-2 mb-2">
         <Button
           variant="info"
           active={"black" === fontColor}
           value="black"
           onClick={value => hendleColor(value)}
         >
-          Black
+          Font color black
         </Button>
         <Button
           variant="info"
@@ -120,11 +120,11 @@ const FontsPositionAndConvert = ({
           value="white"
           onClick={value => hendleColor(value)}
         >
-          White
+         Font color white
         </Button>
       </ButtonGroup>
-      <Button variant="success" onClick={hendleConvertion}>
-        Convert
+      <Button variant="success" onClick={hendleConvertion} className="mr-2 ml-2 mb-2">
+        Convert image
       </Button>
     </Card>
   );
