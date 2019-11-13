@@ -47,8 +47,14 @@ class Logic extends Component {
     }
   };
 
+  hendlePictureClick = e => {
+    //this.setState({ picture: e.target.files, convertedPicture: null })
+    console.log("sorry not implamented")
+  };
+
+
+
   hendleHorizantalAlign = e => {
-    
     this.setState({ horizontal_align: e.target.value });
     
   };
@@ -76,12 +82,13 @@ class Logic extends Component {
   };
 
   hendleConvertion = () => {
-    console.log("convertion");
+    //console.log("convertion");
     if (!this.state.picture && !this.state.convertedPicture) {
       return;
     }
 
     const data = new FormData();
+    //console.log(this.state.picture)
     data.append("image", this.state.picture);
     //modify again modified picture (add second line or more)
     //this.state.picture ? data.append('image', this.state.picture) : data.append('image', this.state.convertedPicture.slice(9));
@@ -143,8 +150,11 @@ class Logic extends Component {
       convertedPicture,
       loaded
     } = this.state;
-    if (picture) {
+    
+    if (typeof(picture) === "object" && picture) { //leftover for sellect pictures implamentation
       pictureUrl = URL.createObjectURL(picture);
+    } else {
+      pictureUrl = picture;
     }
 
     return (
@@ -168,6 +178,8 @@ class Logic extends Component {
         hendleYmove={this.hendleYmove}
         convertedPicture={convertedPicture}
         loaded={loaded}
+        hendlePictureClick={this.hendlePictureClick}
+ 
       />
     );
   }

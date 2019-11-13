@@ -9,7 +9,7 @@ import FontsPositionAndConvert from "./fontsPositionAndConvert";
 
 const Index = ({
   text,
-  hendleTextInput, 
+  hendleTextInput,
   picture,
   hendlePictureInput,
   horizontal_align,
@@ -26,13 +26,21 @@ const Index = ({
   hendleXmove,
   hendleYmove,
   convertedPicture,
-  loaded
+  loaded,
+  hendlePictureClick
 }) => {
   return (
     <React.Fragment>
       <Welcome />
-      <Picture picture={picture} convertedPicture={convertedPicture} loaded={loaded}/>
-      <UploadImage hendlePictureInput={hendlePictureInput} />
+      <Picture
+        picture={picture}
+        convertedPicture={convertedPicture}
+        loaded={loaded}
+      />
+      <UploadImage
+        hendlePictureInput={hendlePictureInput}
+        hendlePictureClick={hendlePictureClick}
+      />
       <InputText text={text} hendleTextInput={hendleTextInput} />
       <TextCordinates
         xTextMove={xTextMove}
