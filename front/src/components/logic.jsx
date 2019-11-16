@@ -2,20 +2,23 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Visual from "./visual/index";
-import {SERVER_ADDRESS, FRONT_SERVER_ADDRESS, SERVER_ADDRESS_IMAGES} from "../CONFIQ";
-
+import {
+  SERVER_ADDRESS,
+  FRONT_SERVER_ADDRESS,
+  SERVER_ADDRESS_IMAGES
+} from "../CONFIQ";
 
 class Logic extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.timer = null;
     this._mounted = false;
-}
+  }
   state = {
     text: "",
     picture: null,
     convertedPicture: null,
-    loaded: 0,
+    internalPicture: null,    loaded: 0,
     horizontal_align: "center",
     vertical_align: "top",
     fontSize: "16",
@@ -26,43 +29,39 @@ class Logic extends Component {
 
   componentDidMount() {
     this._mounted = true;
-  };
+  }
 
   componentWillUnmount() {
     this._mounted = false;
-    if(this.timer){
+    if (this.timer) {
       clearTimeout(this.timer);
+    }
   }
-  };
 
   hendleTextInput = e => {
-    if(this._mounted){
-    this.setState({ text: e.target.value });
+    if (this._mounted) {
+      this.setState({ text: e.target.value });
     }
   };
 
   hendlePictureInput = e => {
     if (e.target.files[0] && this._mounted) {
-      this.setState({ picture: e.target.files[0], convertedPicture: null });
+      this.setState({ picture: e.target.files[0], convertedPicture: null, internalPicture: null });
     }
   };
 
   hendlePictureClick = e => {
     //this.setState({ picture: e.target.files, convertedPicture: null })
-    console.log("sorry not implamented")
+    this.setState({ picture: null, convertedPicture: e.target.src, internalPicture: e.target.name });
+    console.log( e.target);
   };
-
-
 
   hendleHorizantalAlign = e => {
     this.setState({ horizontal_align: e.target.value });
-    
   };
 
   hendleVerticalAlign = e => {
-   
     this.setState({ vertical_align: e.target.value });
-    
   };
 
   hendleDropDownClick = e => {
@@ -83,13 +82,14 @@ class Logic extends Component {
 
   hendleConvertion = () => {
     //console.log("convertion");
-    if (!this.state.picture && !this.state.convertedPicture) {
-      return;
+    if (!this.state.picture && !this.state.convertedPicture && !this.state.internalPicture) {
+      return console.log("Please select image");
     }
 
     const data = new FormData();
     //console.log(this.state.picture)
     data.append("image", this.state.picture);
+    data.append("internalPicture", this.state.internalPicture);
     //modify again modified picture (add second line or more)
     //this.state.picture ? data.append('image', this.state.picture) : data.append('image', this.state.convertedPicture.slice(9));
     data.append(
@@ -111,7 +111,7 @@ class Logic extends Component {
     console.log(this.state.text);
     axios
       .post(SERVER_ADDRESS + "api/upload/", data, {
-       /* onUploadProgress: ProgressEvent => {
+        /* onUploadProgress: ProgressEvent => {
           this.setState({
             loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100
           });
@@ -120,10 +120,12 @@ class Logic extends Component {
       .then(res => {
         // timeout for local development, pc tooks some time to save img
         //and Cross-Origin Read Blocking (CORB)
-        this.timer = setTimeout(()=> {
-        this.setState({ convertedPicture: SERVER_ADDRESS_IMAGES + res.data.picture }); //use SERVER_ADDRESS_IMAGES or FRONT_SERVER_ADDRESS if running localy
-        return console.log(res.data);
-      }, 2000)
+        this.timer = setTimeout(() => {
+          this.setState({
+            convertedPicture: SERVER_ADDRESS_IMAGES + res.data.picture
+          }); //use SERVER_ADDRESS_IMAGES or FRONT_SERVER_ADDRESS if running localy
+          return console.log(res.data);
+        }, 2000);
       });
     /* axios({
         method: 'post',
@@ -150,8 +152,9 @@ class Logic extends Component {
       convertedPicture,
       loaded
     } = this.state;
-    
-    if (typeof(picture) === "object" && picture) { //leftover for sellect pictures implamentation
+
+    if (typeof picture === "object" && picture) {
+      //leftover for sellect pictures implamentation
       pictureUrl = URL.createObjectURL(picture);
     } else {
       pictureUrl = picture;
@@ -179,7 +182,6 @@ class Logic extends Component {
         convertedPicture={convertedPicture}
         loaded={loaded}
         hendlePictureClick={this.hendlePictureClick}
- 
       />
     );
   }
