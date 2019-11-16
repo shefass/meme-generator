@@ -15,7 +15,11 @@ router.get("/", (req, res) => {
 */
 
 router.post("/upload", upload.single("image"), async function(req, res) {
-  if (!req.file && req.body.image === "null") {
+  if (
+    !req.file &&
+    req.body.image === "null" &&
+    req.body.internalPicture === "null"
+  ) {
     return res.status(401).json({ error: "Please provide an image" });
   }
   const imagePath = path.join(__dirname, WHERE_SAVE_CONVERTED_IMAGES);
@@ -32,11 +36,27 @@ router.post("/upload", upload.single("image"), async function(req, res) {
   console.log(req.body);
 
   const filename = await fileUpload.save(
-    req.file ? req.file.buffer : imagePath + req.body.image
+    req.file
+      ? req.file.buffer
+      : req.body.internalPicture
+      ? findSelectedImage(req.body.internalPicture)
+      : imagePath + req.body.image
   );
   res.status(200).json({ picture: filename }); //returns new pictures filename
 });
 
+const findSelectedImage = image => {
+  switch (image) {
+    case "first":
+      return "./images/first.png";
+    case "second":
+      return "./images/second.png";
+    case "third":
+      return "./images/third.png";
+    default:
+      console.log("error in findSelectedImage()");
+  }
+};
 module.exports = router;
 
 //other implamentations

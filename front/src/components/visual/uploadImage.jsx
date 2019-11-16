@@ -14,7 +14,7 @@ import ThirdPicture from "../../images/third.png";
 const uploadImage = ({ hendlePictureInput, hendlePictureClick}) => {
   return (
     <Card className="mb-2 pl-2" bg="light">
-      <Form.Label>Upload image or select from list(sorry not implamented)</Form.Label>
+      <Form.Label>Upload image or select from list</Form.Label>
       <Form.Control
         className="mb-1"
         type="file"
