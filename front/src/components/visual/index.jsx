@@ -5,7 +5,8 @@ import Picture from "./picture";
 import UploadImage from "./uploadImage";
 import InputText from "./inputText";
 import TextCordinates from "./textCordinates";
-import FontsPositionAndConvert from "./fontsPositionAndConvert";
+import FontsPositionAndConvert from "./fontsPosition";
+import ConvertButton from "./convertButton";
 
 const Index = ({
   text,
@@ -27,7 +28,8 @@ const Index = ({
   hendleYmove,
   convertedPicture,
   loaded,
-  hendlePictureClick
+  hendlePictureClick,
+  error
 }) => {
   return (
     <React.Fragment>
@@ -40,6 +42,7 @@ const Index = ({
       <UploadImage
         hendlePictureInput={hendlePictureInput}
         hendlePictureClick={hendlePictureClick}
+        error={error}
       />
       <InputText text={text} hendleTextInput={hendleTextInput} />
       <TextCordinates
@@ -55,9 +58,13 @@ const Index = ({
         hendleVerticalAlign={hendleVerticalAlign}
         fontSize={fontSize}
         hendleDropDownClick={hendleDropDownClick}
-        hendleConvertion={hendleConvertion}
         fontColor={fontColor}
         hendleColor={hendleColor}
+      />
+      <ConvertButton
+        hendleConvertion={hendleConvertion}
+        picture={picture}
+        convertedPicture={convertedPicture}
       />
     </React.Fragment>
   );

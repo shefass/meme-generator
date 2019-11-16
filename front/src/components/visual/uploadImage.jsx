@@ -11,7 +11,7 @@ import FirstPicture from "../../images/first.png";
 import SecondPicture from "../../images/second.png";
 import ThirdPicture from "../../images/third.png";
 
-const uploadImage = ({ hendlePictureInput, hendlePictureClick}) => {
+const uploadImage = ({ hendlePictureInput, hendlePictureClick, error}) => {
   return (
     <Card className="mb-2 pl-2" bg="light">
       <Form.Label>Upload image or select from list</Form.Label>
@@ -21,6 +21,7 @@ const uploadImage = ({ hendlePictureInput, hendlePictureClick}) => {
         name="image"
         onChange={value => hendlePictureInput(value)}
       />
+      {<strong style={{color: 'red'}}>{error}</strong>}
       <Container>
         <Row>
           <Col>

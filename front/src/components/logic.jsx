@@ -26,7 +26,8 @@ class Logic extends Component {
     fontSize: "16",
     fontColor: "black",
     xTextMove: "",
-    yTextMove: ""
+    yTextMove: "",
+    error: null
   };
 
   componentDidMount() {
@@ -47,15 +48,23 @@ class Logic extends Component {
   };
 
   hendlePictureInput = e => {
+
+
     if (e.target.files[0] && this._mounted) {
-      this.setState({ picture: e.target.files[0], convertedPicture: null, internalPicture: null });
+      if(!/image/.test(e.target.files[0].type)) {
+       return this.setState({ error: "Please upload image, not a "+ e.target.files[0].type })
+      } else if(Number(e.target.files[0].size) > 1024 * 1024 * 4){
+        return this.setState({ error: "Please upload smaller image, max size 4mb"})
+      } else {
+        this.setState({ picture: e.target.files[0], convertedPicture: null, internalPicture: null, error: null });
+      }
     }
   };
 
   hendlePictureClick = e => {
-    //this.setState({ picture: e.target.files, convertedPicture: null })
-    this.setState({ picture: null, convertedPicture: e.target.src, internalPicture: e.target.name });
-    console.log( e.target);
+
+    this.setState({ picture: null, convertedPicture: e.target.src, internalPicture: e.target.name, error: null  });
+   
   };
 
   hendleHorizantalAlign = e => {
@@ -152,9 +161,10 @@ class Logic extends Component {
       xTextMove,
       yTextMove,
       convertedPicture,
-      loaded
+      loaded,
+      error
     } = this.state;
-
+    
     if (typeof picture === "object" && picture) {
       //leftover for sellect pictures implamentation
       pictureUrl = URL.createObjectURL(picture);
@@ -184,6 +194,7 @@ class Logic extends Component {
         convertedPicture={convertedPicture}
         loaded={loaded}
         hendlePictureClick={this.hendlePictureClick}
+        error={error}
       />
     );
   }

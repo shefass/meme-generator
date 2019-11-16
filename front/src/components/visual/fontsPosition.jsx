@@ -13,8 +13,7 @@ const FontsPositionAndConvert = ({
   fontSize,
   hendleDropDownClick,
   fontColor,
-  hendleColor,
-  hendleConvertion
+  hendleColor  
 }) => {
   return (
     <Card className="mb-2" bg="light">
@@ -25,7 +24,7 @@ const FontsPositionAndConvert = ({
           value="top"
           onClick={value => hendleVerticalAlign(value)}
         >
-          Text position - Top
+          Text vertical position - Top
         </Button>
         <Button
           variant="info"
@@ -59,7 +58,7 @@ const FontsPositionAndConvert = ({
           value="center"
           onClick={value => hendleHorizantalAlign(value)}
         >
-          Center
+          Text horizontal position - Center
         </Button>
         <Button
           variant="info"
@@ -123,9 +122,7 @@ const FontsPositionAndConvert = ({
          Font color white
         </Button>
       </ButtonGroup>
-      <Button variant="success" onClick={hendleConvertion} className="mr-2 ml-2 mb-2">
-        Convert image
-      </Button>
+    
     </Card>
   );
 };
