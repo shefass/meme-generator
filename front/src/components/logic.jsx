@@ -20,7 +20,7 @@ class Logic extends Component {
     picture: null,
     convertedPicture: null,
     internalPicture: null,  
-    loaded: 0,
+    loaded: 0, //not used
     horizontal_align: "center",
     vertical_align: "top",
     fontSize: "16",
@@ -138,15 +138,6 @@ class Logic extends Component {
           return console.log(res.data);
         }, 2000);
       });
-    /* axios({
-        method: 'post',
-        url: 'http://localhost:4000/upload/post',
-        data: {
-           image: this.state.picture, 
-          text: this.state.text
-        },
-        headers: { 'content-type': 'multipart/form-data' }
-      }); */
   };
 
   render() {

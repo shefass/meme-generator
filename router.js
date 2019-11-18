@@ -4,7 +4,7 @@ const upload = require("./uploadMiddleware");
 const ModifyImage = require("./ModifyImage");
 const path = require("path");
 
-const WHERE_SAVE_CONVERTED_IMAGES = require("./CONFIQ"); //LOCAL TESTING
+const WHERE_SAVE_CONVERTED_IMAGES = require("./CONFIQ"); //LOCAL TESTING or server
 
 //disable helmet, if this test not works
 /*
