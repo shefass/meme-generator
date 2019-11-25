@@ -10,6 +10,7 @@ yarn-error.log*
 /build
 
 /public/images
+/public
 package-lock.json
 
 # misc
