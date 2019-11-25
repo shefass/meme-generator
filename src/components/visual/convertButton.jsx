@@ -12,7 +12,7 @@ const Convert = ({ hendleConvertion, picture, convertedPicture }) => {
       <OverlayTrigger
         overlay={
           <Tooltip>
-            Please upload your image or select from the galary. Good luck!
+            Please upload your image or select from the gallery. Good luck!
           </Tooltip>
         }
       >
