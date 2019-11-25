@@ -1,7 +1,7 @@
 # Meme-generator(beta)
 Simple text writer on the image<br>
 It is a full-stack program. BackEnd: Node.js(express.js, ...). FrontEnd: React(front folder)<br>
-You can try this web app here: http://meme.vaickelionis.com (not working) <br>
+You can try this web app here: http://meme.vaickelionis.com <br>
 
 Images converted using JIMP library.
 https://www.npmjs.com/package/jimp
