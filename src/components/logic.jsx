@@ -4,9 +4,8 @@ import axios from "axios";
 import Visual from "./visual/index";
 import {
   SERVER_ADDRESS,
-  FRONT_SERVER_ADDRESS,
-  SERVER_ADDRESS_IMAGES,
-  SERVER_ADDRESS_LOCAL
+  FRONT_SERVER_ADDRESS
+  
 } from "../CONFIQ";
 
 class Logic extends Component {
@@ -121,7 +120,7 @@ class Logic extends Component {
     );
     console.log(this.state.text);
     axios
-      .post(SERVER_ADDRESS_LOCAL + "api/upload/", data, {  //use SERVER_ADDRESS or SERVER_ADDRESS_LOCAL if running localy
+      .post(SERVER_ADDRESS + "api/upload/", data, {  
         /* onUploadProgress: ProgressEvent => {
           this.setState({
             loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100
@@ -134,7 +133,7 @@ class Logic extends Component {
         this.timer = setTimeout(() => {
           this.setState({
             convertedPicture: FRONT_SERVER_ADDRESS + res.data.picture
-          }); //use SERVER_ADDRESS_IMAGES or FRONT_SERVER_ADDRESS if running localy
+          }); 
           return console.log(res.data);
         }, 2000);
       });

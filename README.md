@@ -12,7 +12,9 @@ docker run -d -p 3000:3000 -p 4000:4000 shefass/meme-generator <br>
 Go to http://localhost:3000/ (frontend), backend accessed using 4000 port<br> 
 Other way: <br>
 Clone this repo.<br>
+
 <b>npm install</b> <br>
+Modify src/CONFIQ.js file, change constants to FOR_LOCAL_DEVELOPMENT and FOR_LOCAL_DEVELOPMENT_FRONT<br>
 <b>npm start</b><br>
 
 ## Todo
